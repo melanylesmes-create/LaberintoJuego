@@ -19,8 +19,8 @@ public class VistaConsola {
     public static void main(String[] args) {
         mostrarBienvenida();
 
-        int filas = pedirEntero("Filas (impar ≥5): ");
-        int columnas = pedirEntero("Columnas (impar ≥5): ");
+        int filas = pedirEntero("Filas (impar >=5): ");
+        int columnas = pedirEntero("Columnas (impar >=5): ");
 
         // Inicializamos el puente con una caché de 50 laberintos
         puente = new configuracionPrincipal(filas, columnas, 50);
@@ -42,30 +42,30 @@ public class VistaConsola {
         char[][] matrizInicial = puente.generarLaberinto(semilla);
         imprimirMatriz(matrizInicial);
 
-        System.out.println("\n🔍 Buscando camino óptimo con BFS...");
+        System.out.println("\nQ)Buscando camino óptimo con BFS...");
         ResultadoDTO resultado = puente.resolverBFS(semilla);
 
         if (resultado.ruta.verificarEsVacia()) {
-            System.out.println("❌ No se encontró un camino válido para esta semilla.");
+            System.out.println("X) No se encontró un camino válido para esta semilla.");
             return;
         }
 
-        System.out.println("\n✅ Ruta óptima encontrada:");
+        System.out.println("\n:) Ruta óptima encontrada:");
         // La matriz ya viene marcada con '·' desde resolverBFS()
         imprimirMatriz(puente.generarLaberinto(semilla));
 
-        System.out.println("📏 Pasos mínimos (BFS): " + (resultado.ruta.cantidad() - 1));
-        System.out.println("⏱️ Tiempo de ejecución: " + resultado.tiempoMs + " ms");
+        System.out.println("-- Pasos mínimos (BFS): " + (resultado.ruta.cantidad() - 1));
+        System.out.println("--️ Tiempo de ejecución: " + resultado.tiempoMs + " ms");
 
         // Comparación opcional con DFS
         int pasosDFS = puente.compararDFS();
         if (pasosDFS != -1) {
-            System.out.println("📊 Pasos encontrados por DFS: " + pasosDFS + " (no garantiza el mínimo)");
+            System.out.println(":D) Pasos encontrados por DFS: " + pasosDFS + " (no garantiza el mínimo)");
         } else {
-            System.out.println("📊 DFS: No encontró camino válido.");
+            System.out.println("D:) DFS: No encontró camino válido.");
         }
 
-        System.out.println("\n🏆 TOP 5 RANKING (menor cantidad de pasos):");
+        System.out.println("\n- TOP 5 RANKING (menor cantidad de pasos):");
         System.out.println(puente.obtenerRanking());
         System.out.println("-----------------------------------");
     }
@@ -85,7 +85,7 @@ public class VistaConsola {
     // ================= MÉTODOS AUXILIARES DE I/O =================
 
     private static void mostrarBienvenida() {
-        System.out.println("🧩 PROYECTO 5: Laberinto Aleatorio y Camino Mínimo");
+        System.out.println("PROYECTO 5: Laberinto Aleatorio y Camino Mínimo");
         System.out.println("------------------------------------------------");
     }
 

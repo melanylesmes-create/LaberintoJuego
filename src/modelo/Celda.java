@@ -10,7 +10,7 @@ public class Celda {
     public Celda (int ejeX, int ejeY, char tipo){
         this.fila = ejeX;
         this.columna = ejeY;
-        this.tipo = tipo;
+        this.tipo = tipo; /*Para saber si es: Pared, camino, inicio, salida, espacio */
     }
 
     public int getFila() {
@@ -20,7 +20,8 @@ public class Celda {
     public int getColumna() {
         return columna;
     }
-
+    
+    /*Retorna el tipo de celda: pared, camino, inicio, salida, espacio*/
     public char getTipo() {
         return tipo;
     }
@@ -29,10 +30,11 @@ public class Celda {
         this.tipo = tipo;
     }
     
+    /*Compara si la celda esta en la misma posición que otra*/
     public boolean verificarSonIguales (Celda otra){
         return (this.fila == otra.getFila()) && (this.columna == otra.getColumna());
     }
-    
+    /*Retorna true si es una pared o false si no*/
     public boolean verificarPared(){
         return tipo == '|';
     }
