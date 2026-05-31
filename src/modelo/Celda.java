@@ -36,6 +36,6 @@ public class Celda {
     }
     /*Retorna true si es una pared o false si no*/
     public boolean verificarPared(){
-        return tipo == '|';
+        return tipo == '#';
     }
 }
