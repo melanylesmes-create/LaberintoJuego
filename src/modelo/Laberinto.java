@@ -40,7 +40,7 @@ public class Laberinto {
         // Inicializamos todo como pared
         for (int f = 0; f < filas; f++) {
             for (int c = 0; c < columnas; c++) {
-                matriz[f][c] = '|';
+                matriz[f][c] = '█';
             }
         }
 
