@@ -23,13 +23,13 @@ public class VistaConsola {
         controlador = new configuracionPrincipal(altoLaberinto, anchoLaberinto, 50);
 
         // Bucle que permite jugar múltiples veces sin reiniciar el juego
-        while (jugarOtraPartida()) {
-            Long codigoLaberinto = pedirCodigoLaberinto();
-            iniciarPartida(codigoLaberinto);
-        }
+    do{
+        Long codigoLaberinto = pedirCodigoLaberinto();
+        iniciarPartida(codigoLaberinto);
+    }while (jugarOtraPartida());
 
-        System.out.println("\n Partida finalizada. ");
-    }
+        System.out.println("\n Partida finalizada.");
+}
         
     /* Controla el flujo completo de una partida:
        generación, búsqueda y visualización.
@@ -100,7 +100,7 @@ public class VistaConsola {
     }
 
     private static boolean jugarOtraPartida() {
-        System.out.print("\n¿Desea jugar otra partida? (s/n): ");
+        System.out.print("\n ¿Desea jugar otra partida? (s/n): ");
         return entrada.next().trim().equalsIgnoreCase("s");
     }
 }
