@@ -10,22 +10,26 @@ public class Cola {
        fin = null;
     }
     
-    /*Es como hacer el metodo IsEmpty, devuelve verdadero o falso
+    /*Es como hacer el metodo IsEmpty, devuelve verdadero o falso si almenos
+    hay un nodo.
     */
     public boolean verificarEsVacia(){
         return inicio == null;
     }
     
     /*Metodo encolar nos ayudara a insertar un elemento al final
+    respeta FIFO
     */
     public void encolar (Object valor){
         Nodo nuevoNodo = new Nodo();
         nuevoNodo.setValor(valor);
         
-        if(verificarEsVacia()){
+        if(verificarEsVacia()){ // si es el primer elemento que entra
+                                // tanto el inicio como el fin son el mismo nodo
             inicio = nuevoNodo;
             fin = nuevoNodo;
-        }else {
+        }else { 
+            // si ya hay elementos, el ultimo elemento agarra al nuevo
             fin.setSiguiente(nuevoNodo);
             fin = nuevoNodo;
         }
@@ -36,8 +40,9 @@ public class Cola {
     */
     public Object desencolar(){
         if (!verificarEsVacia()){
-            Object dato = inicio.getValor();
+            Object dato = inicio.getValor(); //guardamos el dato
             if(inicio == fin){
+                //verifica si solo hay un elemento y apuntan al mismo nodo
                 inicio = null;
                 fin = null;
             }else {
