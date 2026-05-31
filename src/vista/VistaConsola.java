@@ -6,39 +6,58 @@ import java.util.Scanner;
 import modelo.Celda;
 
 
+<<<<<<< HEAD
 /* Esta clase es la interfaz de usuario en consola.
    Su única responsabilidad es manejar la entrada y salida de datos.
    Delega TODA la lógica a ConfiguracionPrincipal. 
    NO contiene algoritmos, ni manipu
    */
+=======
+
+>>>>>>> 685431134a0ce14baaf7f1897f113f89d62b6d99
 public class VistaConsola {
     private static Scanner entrada = new Scanner(System.in);
-    private static configuracionPrincipal puente;
+    private static configuracionPrincipal controlador;
 
-    /* Punto de entrada del programa.
-       Configura dimensiones, inicializa el puente y mantiene el bucle de partidas.
-    */
+     /* Punto de entrada del programa.
+       Configura el tamaño del laberinto e inicia las partidas.
+     */
     public static void main(String[] args) {
-        mostrarBienvenida();
+        mostrarInicioJuego();
+   
 
-        int filas = pedirEntero("Filas (impar >=5): ");
-        int columnas = pedirEntero("Columnas (impar >=5): ");
+        int altoLaberinto  = pedirNumero("Para altura del laberinto (ingresa un numero impar mayor o igual a 5): ");
+        int anchoLaberinto  = pedirNumero("Para anchura del laberinto (ingresa un numero impar mayor o igual a 5): ");
 
+<<<<<<< HEAD
         
 
 
         // Inicializamos el puente con una caché de 50 laberintos
         puente = new configuracionPrincipal(filas, columnas, 50);
+=======
+        // Inicializamos el controlador con una caché de 50 laberintos
+        controlador = new configuracionPrincipal(altoLaberinto, anchoLaberinto, 50);
+>>>>>>> 685431134a0ce14baaf7f1897f113f89d62b6d99
 
-        // Bucle que permite jugar múltiples veces sin reiniciar el programa
-        while (confirmarContinuar()) {
-            Long semilla = pedirSemilla();
-            ejecutarPartida(semilla);
-        }
+        // Bucle que permite jugar múltiples veces sin reiniciar el juego
+    do{
+        Long codigoLaberinto = pedirCodigoLaberinto();
+        iniciarPartida(codigoLaberinto);
+    }while (jugarOtraPartida());
 
-        System.out.println("\n✅ Programa finalizado correctamente.");
-    }
+        System.out.println("\n Partida finalizada.");
+}
+        
+    /* Controla el flujo completo de una partida:
+       generación, búsqueda y visualización.
+     */
+        private static void iniciarPartida(Long CodigoLaberinto) {
+        System.out.println("\n Creando laberinto...");
+        char[][] laberintoGenerado = controlador.generarLaberinto(CodigoLaberinto);
+         mostrarLaberinto(laberintoGenerado);
 
+<<<<<<< HEAD
     /* Orquesta generación, resolución, comparación y visualización.
        Solo coordina llamadas al puente, sin lógica propia.
     */
@@ -49,48 +68,57 @@ public class VistaConsola {
         System.out.println("\n🔄 Generando laberinto...");
         char[][] matrizInicial = puente.generarLaberinto(semilla);
         imprimirMatriz(matrizInicial);
+=======
+        System.out.println("\n Buscando la mejor ruta...");
+        ResultadoDTO resultadoBusqueda = controlador.resolverBFS(CodigoLaberinto);
+>>>>>>> 685431134a0ce14baaf7f1897f113f89d62b6d99
 
-        System.out.println("\nQ)Buscando camino óptimo con BFS...");
-        ResultadoDTO resultado = puente.resolverBFS(semilla);
-
-        if (resultado.ruta.verificarEsVacia()) {
-            System.out.println("X) No se encontró un camino válido para esta semilla.");
+        if (resultadoBusqueda.ruta.verificarEsVacia()) {
+            System.out.println("No se encontro una salida para este laberinto.");
             return;
         }
 
+<<<<<<< HEAD
         System.out.println("\n:) Ruta óptima encontrada:");
         // La matriz ya viene marcada con '·' desde resolverBFS()
         imprimirMatriz(puente.generarLaberinto(semilla));
         
+=======
+        System.out.println("\n: Mejor ruta encontrada: ");
+        // La matriz ya viene marcada con el camino encontrado
+         mostrarLaberinto(controlador.generarLaberinto(CodigoLaberinto));
+>>>>>>> 685431134a0ce14baaf7f1897f113f89d62b6d99
 
-        System.out.println("-- Pasos mínimos (BFS): " + (resultado.ruta.cantidad() - 1));
-        System.out.println("--️ Tiempo de ejecución: " + resultado.tiempoMs + " ms");
+        System.out.println("Pasos necesarios: " + (resultadoBusqueda.ruta.cantidad() - 1));
+        System.out.println("Tiempo de busqueda: " + resultadoBusqueda.tiempoMs + " ms");
 
         // Comparación opcional con DFS
-        int pasosDFS = puente.compararDFS();
-        if (pasosDFS != -1) {
-            System.out.println(":D) Pasos encontrados por DFS: " + pasosDFS + " (no garantiza el mínimo)");
+        int pasosRutaAlternativa = controlador.compararDFS();
+        if (pasosRutaAlternativa != -1) {
+            System.out.println("Ruta alternativa encontrada: " + pasosRutaAlternativa
+                    + "pasos");
         } else {
-            System.out.println("D:) DFS: No encontró camino válido.");
+            System.out.println("No se encontró una ruta alternativa.");
         }
 
-        System.out.println("\n- TOP 5 RANKING (menor cantidad de pasos):");
-        System.out.println(puente.obtenerRanking());
+        System.out.println("\n TOP 5 MEJORES PARTIDAS: ");
+        System.out.println(controlador.obtenerRanking());
         System.out.println("-----------------------------------");
     }
 
-    /* Dibuja la matriz fila por fila en la consola.
-       Agrega espaciado para mejor legibilidad visual.
-    */
-    private static void imprimirMatriz(char[][] matriz) {
-        for (int fila = 0; fila < matriz.length; fila++) {
-            for (int columna = 0; columna < matriz[fila].length; columna++) {
-                System.out.print(matriz[fila][columna] + "  ");
+    /* Dibuja la matriz fila por fila en la consola.*/
+
+  
+    private static void  mostrarLaberinto(char[][] laberinto) {
+        for (int fila = 0; fila < laberinto.length; fila++) {
+            for (int columna = 0; columna < laberinto[fila].length; columna++) {
+                System.out.print(laberinto[fila][columna] + "  ");
             }
             System.out.println();
         }
     }
 
+<<<<<<< HEAD
     private static void imprimirMatrizPaso(char[][] matriz, Celda actual) {
     for (int fila = 0; fila < matriz.length; fila++) {
         for (int columna = 0; columna < matriz[fila].length; columna++) {
@@ -108,26 +136,29 @@ public class VistaConsola {
 
 
     // ================= MÉTODOS AUXILIARES DE I/O =================
+=======
+    //MÉTODOS AUXILIARES
+>>>>>>> 685431134a0ce14baaf7f1897f113f89d62b6d99
 
-    private static void mostrarBienvenida() {
-        System.out.println("PROYECTO 5: Laberinto Aleatorio y Camino Mínimo");
-        System.out.println("------------------------------------------------");
+    private static void mostrarInicioJuego() {
+        System.out.println("------------------------Escape del Laberinto-------------------------");
+        System.out.println("---------------------------------------------------------------------");
     }
 
-    private static int pedirEntero(String mensaje) {
+    private static int pedirNumero(String mensaje) {
         System.out.print(mensaje);
         return entrada.nextInt();
     }
 
-    private static Long pedirSemilla() {
-        System.out.print("Semilla (Long) o 0 para aleatoria: ");
-        Long semilla = entrada.nextLong();
-        // Si el usuario ingresa 0, usamos el tiempo actual como semilla aleatoria
-        return semilla == 0 ? System.nanoTime() : semilla;
+    private static Long pedirCodigoLaberinto() {
+        System.out.print("Codigo del laberinto (0 para aleatorio):");
+        Long codigoGenerado   = entrada.nextLong();
+       
+        return codigoGenerado == 0 ? System.nanoTime() : codigoGenerado ;
     }
 
-    private static boolean confirmarContinuar() {
-        System.out.print("\n¿Desea generar otra partida? (s/n): ");
+    private static boolean jugarOtraPartida() {
+        System.out.print("\n ¿Desea jugar otra partida? (s/n): ");
         return entrada.next().trim().equalsIgnoreCase("s");
     }
 

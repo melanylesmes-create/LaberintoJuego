@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/LaberintoJuego/src/modelo/Pila.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/LaberintoJuego/src/modelo/Celda.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/LaberintoJuego/src/modelo/Nodo.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/LaberintoJuego/src/modelo/Cola.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/LaberintoJuego/src/modelo/ListaEnlazada.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/configuracion/ResultadoDTO.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/modelo/Laberinto.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/modelo/Celda.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/modelo/Cola.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/modelo/ListaEnlazada.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/modelo/TablaHash.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/vista/VistaConsola.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/modelo/Nodo.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/modelo/ArbolBinario.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/modelo/Pila.java</file>
+            <file>file:/C:/Users/ASUS/LaberintoJuego/src/configuracion/configuracionPrincipal.java</file>
         </group>
     </open-files>
 </project-private>

@@ -8,7 +8,7 @@ import modelo.ListaEnlazada;
    No contiene lógica de búsqueda, solo almacena datos de forma temporal.
 */
 public class ResultadoDTO {
-    public ListaEnlazada ruta;   // Secuencia de celdas desde INICIO hasta SALIDA
+     public ListaEnlazada ruta;   // Secuencia de celdas desde INICIO hasta SALIDA
     public long tiempoMs;        // Tiempo que tardó el algoritmo en milisegundos
 
     /* Constructor simple que recibe y asigna los valores directamente.
