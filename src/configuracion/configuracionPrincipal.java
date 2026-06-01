@@ -46,6 +46,7 @@ public class configuracionPrincipal {
 
         return new ResultadoDTO(rutaOptima, tiempoEjecucion);
     }
+    
 
     /* Ejecuta DFS para comparar la longitud del camino con BFS.
        Retorna la cantidad de pasos o -1 si no hay solución.

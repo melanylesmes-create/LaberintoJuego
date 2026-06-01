@@ -149,6 +149,7 @@ public class Laberinto {
         int finX = columnas - 2;
         return reconstruirCamino(padres, encontrado, finY, finX);
     }
+    
 
     /* Reconstruye el camino desde la salida hasta el inicio.
        Usa el arreglo de padres para retroceder paso a paso.
