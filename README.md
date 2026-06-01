@@ -15,14 +15,13 @@ El objetivo es aplicar principios de programación orientada a objetos y estruct
 # Instrucciones para ejecutar el programa
 1. Ejecutar el programa desde `VistaConsola.java`.
 2. Ingresar dimensiones del laberinto (mínimo 5x5, impares).
-3. Elegir si desea ver la búsqueda paso a paso (`s/n`).
-4. Ingresar una semilla (Long) o `0` para generar una aleatoria.
-5. El programa mostrará:
+3. Ingresar una semilla (Long) o `0` para generar una aleatoria.
+4. El programa mostrará:
    - Laberinto generado
    - Camino óptimo (BFS)
    - Comparación con DFS
    - Ranking de mejores tiempos
-6. Repetir partidas o finalizar el programa.
+5. Repetir partidas o finalizar el programa.
 
 #  Estructura del programa 
 LABERINTOJUEGO/
